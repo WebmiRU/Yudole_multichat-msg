@@ -44,13 +44,29 @@ type SourceChatChannelJoin struct {
 	Payload SourceChatChannelJoinPayload `json:"payload"`
 }
 
-type UserConfig struct {
-	Type    string            `json:"type"`
-	Payload UserConfigPayload `json:"payload"`
+type Config struct {
+	Type    string        `json:"type"`
+	Payload ConfigPayload `json:"payload"`
 }
 
-type UserConfigPayload struct {
+type ConfigPayload struct {
 	Channels map[string][]string `json:"channels"`
+	Rooms    []ConfigRoom        `json:"rooms"`
+}
+
+type ConfigRoom struct {
+	Id       int             `json:"id"`
+	Title    string          `json:"title"`
+	FontSize int             `json:"font_size"`
+	ThemeId  int             `json:"theme_id"`
+	Theme    ConfigRoomTheme `json:"theme"`
+}
+
+type ConfigRoomTheme struct {
+	Id     int    `json:"id"`
+	Key    string `json:"key"`
+	Title  string `json:"title"`
+	Weight int    `json:"weight"`
 }
 
 type ChatMessage struct {
